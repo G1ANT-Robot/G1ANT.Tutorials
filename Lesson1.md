@@ -8,4 +8,6 @@ The first thing that you should know about G1ANT language is that we use special
 
 So, we need to write:
    
-`ie.open google.com
+```
+ie.open google.com
+```
