@@ -10,6 +10,8 @@ Not only can **mouse.click** perform right or left click but also press the mous
 
 In order to scroll the whole website, we can get the position of the scroll bar on top and then at the bottom to perform the move of it.
 
+Attention: if your automation somehow doesn't work as you wish it to work (due to slow internet connection or a computer) or it is just too fast so it is hard to follow G1ANT.Robot steps, you can use **delay** command in the middle which stops the script for some seconds before it continues to the next line. The default value is 1 so we do not have to type **delay 1**, just writing **delay** will do the same (stop for one second).
+
 Argument *button* lets us choose which mouse button will be pressed - left or right and argument *type* tells the computer whether it will be pressed (down) or just left not pressed (up).
 
 ```
