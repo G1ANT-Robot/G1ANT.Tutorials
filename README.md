@@ -5,6 +5,8 @@
 # [Lesson 2](Lesson2.md)
 
 # [Lesson 3](Lesson3.md)
+* additional materials:
+[data.xlsx](data.xlsx)
 
 # [Lesson 4](Lesson4.md)
 
