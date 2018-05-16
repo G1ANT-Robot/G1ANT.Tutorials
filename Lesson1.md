@@ -55,10 +55,11 @@ Let’s save our script for future use. We want to click Task/Save and call it R
 
 
 Whole code:
-
+```
 ie.open ‴google.com‴
 window ‴Google - Internet Explorer‴
 keyboard ⋘win+up⋙
 keyboard ⋘f5⋙
 keyboard G1ANT⋘enter⋙
 mouse.click ⟦point⟧144⫽214
+```
