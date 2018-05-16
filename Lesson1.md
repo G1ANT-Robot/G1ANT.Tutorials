@@ -52,3 +52,13 @@ mouse.click ⟦point⟧144⫽214
 Okay, we have just created our first robot using only 6 lines of script. Let’s press F9 or Play button to run the automation.
 
 Let’s save our script for future use. We want to click Task/Save and call it Robot 1.  
+
+
+Whole code:
+
+ie.open ‴google.com‴
+window ‴Google - Internet Explorer‴
+keyboard ⋘win+up⋙
+keyboard ⋘f5⋙
+keyboard G1ANT⋘enter⋙
+mouse.click ⟦point⟧144⫽214
