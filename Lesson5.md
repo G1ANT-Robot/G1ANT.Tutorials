@@ -17,6 +17,10 @@ When we have a little more complex automation to do, it is better to firstly com
 
 Let’s investigate the x-rates.com website. Look at the url for Polish Zloty rates table: [http://www.x-rates.com/table/?from=PLN&amount=1](http://www.x-rates.com/table/?from=PLN&amount=1).
 
+We see that there is “from=PLN” section and probably when we put there a different currency, we’ll have another rates table.
+Let’s paste there GBP to find out if we were right. [http://www.x-rates.com/table/?from=GBP&amount=1](http://www.x-rates.com/table/?from=GBP&amount=1). We’ve noticed an algorithm. So, to fill in the GBP, PLN and any other currency table that might be written in this excel sheet, we can just simply create a loop.
+
+
 **Whole code:**
 ```
 ♥dataFile = ‴C:\Users\wikto\Documents\Currencies\update_currency.xlsx‴
