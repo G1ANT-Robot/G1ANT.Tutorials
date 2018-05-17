@@ -57,6 +57,42 @@ Now, we set a label to create a loop in which we will fill in the whole table of
     jump ➜getCurrFrom
 ```
 
+The first thing that we want to do is get value from the merged cells in the first row C-E. To access these data with G1ANT.Robot, we have to get value from the first cell on the right because that is where the value is.
+
+The number of row is not going to change within this loop but number of column – yes. So, let’s create **♥currFromCol** variable set to 3 before our loop because we don’t want our loop to reset the value for this variable each time the loop is done. It should increase each time by 3 because there are 3 of merged cells (column Today, Yesterday and Percent Change). Our result is going to be stored in **♥currFrom** variable.
+
+```
+    ♥currFromCol = 3
+    ➜getCurrFrom
+            excel.getvalue row 1 colindex ♥currFromCol result ♥currFrom
+            ♥currFromCol = ♥currFromCol + 3
+    jump ➜getCurrFrom
+```
+
+Let’s create three more procedures to fill each of those columns separately.
+
+```
+procedure ➤GetAndSetTodayValues
+
+
+
+
+end
+
+procedure ➤GetAndSetYesterdayValues
+    
+    
+    
+end
+
+procedure ➤CalculatePercentChange
+    
+    
+    
+end
+```
+
+```
 
 **Whole code:**
 ```
