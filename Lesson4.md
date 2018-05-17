@@ -66,3 +66,4 @@ end
 ```
 
 **excel.switch** command lets us switch between excel files opened by G1ANT.Robot. We will need this command because we want to switch many times between *data.xlsx* and *data2.xlsx* files to get data, enter data, get data, enter data etc... Now we can use variable *excelid1* that we created at the beginning because we want to open a file with this id. 
+
