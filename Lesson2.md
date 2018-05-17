@@ -33,7 +33,7 @@ window ‴Google - Internet Explorer‴
 keyboard ⋘win+up⋙
 keyboard ⋘f5⋙
 keyboard G1ANT⋘enter⋙
-mouse ‴144⫽214‴
+mouse.click ⟦point⟧144⫽214
 mouse.click position ‴1430⫽115‴ button left type down
 mouse.click position ‴1429⫽780‴ button left type up mousedelay 1500
 ```
