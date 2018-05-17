@@ -21,6 +21,8 @@ excel
 excel, call, jump, procedure
 
 # [Lesson 5](Lesson5.md)
+* additional materials:
+[update_currency.xlsx](update_currency.xlsx)
 * commands used:
 ie, window, excel, jump, call
 
