@@ -20,6 +20,43 @@ Let’s investigate the x-rates.com website. Look at the url for Polish Zloty ra
 We see that there is “from=PLN” section and probably when we put there a different currency, we’ll have another rates table.
 Let’s paste there GBP to find out if we were right. [http://www.x-rates.com/table/?from=GBP&amount=1](http://www.x-rates.com/table/?from=GBP&amount=1). We’ve noticed an algorithm. So, to fill in the GBP, PLN and any other currency table that might be written in this excel sheet, we can just simply create a loop.
 
+In this big loop there should be another loop to go row by row by firstly filling in the Today Column, then the Yesterday Column and last the Percent Change Column. There are other ways to do this automation, of course, but we’ll try to do this this way because it is easy.
+
+As you probably imagine, it is best to create one main function (procedure) and probably three other which will get data from this website and then set them to the corresponding columns in excel.
+
+Okay, once we have the general idea, we can start to code.
+Let’s create one main function that I will name simply a Process.
+
+```
+call ➤Process
+
+procedure ➤Process
+
+
+
+end
+```
+Let’s open **♥dataFile**.
+
+```
+call ➤Process
+
+procedure ➤Process
+    excel.open ♥dataFile
+
+
+end
+```
+
+Now, we set a label to create a loop in which we will fill in the whole table of GBP, then PLN etc.
+
+```
+    excel.open ♥dataFile
+    ➜getCurrFrom
+    
+    jump ➜getCurrFrom
+```
+
 
 **Whole code:**
 ```
