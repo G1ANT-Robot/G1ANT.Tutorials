@@ -174,8 +174,8 @@ procedure ➤NewExcelFile
     excel.open result ♥excelid2
     ♥i = 1
     ➜GetAndSetValues
-    call ➤GetValues row ♥i
-    call ➤SetValues row ♥i
+       call ➤GetValues row ♥i
+       call ➤SetValues row ♥i
     ♥i = ♥i + 1
     jump ➜GetAndSetValues if ⊂♥i < 6⊃
     excel.save path ♥datafile2
