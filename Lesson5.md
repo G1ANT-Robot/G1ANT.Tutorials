@@ -196,6 +196,117 @@ Let’s right click on the converted value from GBP to USD for instance. Then ch
 
 As you can see this element on the website can be found by “href” using this link in quotes. Let’s see if we are right. Click on the Console and using JQUERY expression, find this converted currency value.
 
+As you can see, comparing obtained values to those above in the table, we know that there is an algorithm which we can use in our automation.
+Using **ie.runscript** command and entering these JQUERY expressions as argument values will get us the result we want. Don’t know if I already told you so but we do not have to set the name of the variable where we store the results. It will be named by default a **♥result**.
+
+```
+ie.runscript ‴$('a[href="/graph/?from=♥currFrom&to=♥toCurr"]').eq(0).text()‴
+```
+
+Now we have to convert the result value to float type (type which allows us to have numbers with decimal places).
+
+```
+ ♥TodayValue = ⟦float⟧♥result
+ ```
+ 
+The last thing is to set new variable **♥TodayCol** to **♥currFromCol** just to make our code clearer next time we come back to it, set **♥TodayValue** to the specified cell and increase **♥row** by 1 because this loop fill is in Today Column row by row.
+
+```
+➜getAndSetTodayValues
+            window ‴update_currency - Excel‴
+            excel.getvalue row ♥row colname b result ♥toCurr
+        jump ➜finish2 if ⊂string.IsNullOrEmpty(♥toCurr)⊃
+            ie.runscript ‴$('a[href="/graph/?from=♥currFrom&to=♥toCurr"]').eq(0).text()‴
+            ♥TodayValue = ⟦float⟧♥result
+            ♥TodayCol = ♥currFromCol
+            excel.setvalue value ♥TodayValue row ♥row colindex ♥TodayCol
+            ♥row = ♥row + 1
+    jump ➜getAndSetTodayValues
+```
+
+Let’s reset the variable ♥row back to 3 and close Internet Explorer.
+
+```
+    ♥row = 3
+    ie.close
+```
+
+I don’t think we need to go through ➤GetAndSetYesterdayValues step by step as with the previous one because it is very similar.
+
+The main thing that differs is the webpage link for yesterday values. Example:
+[http://www.x-rates.com/historical/?from=GBP&amount=1&date=2018-02-28](http://www.x-rates.com/historical/?from=GBP&amount=1&date=2018-02-28) 
+
+Probably we can access other webpages like this by changing only the date and currency. You can check if it is right, but I assure you that it is :).
+
+In order to get the yesterday date, we can just add the following line of code at the beginning with the C# expression.
+
+```
+♥yesterday = ⟦text⟧System.DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd")
+```
+
+This is show the ➤GetAndSetYesterdayValues should look.
+
+```
+procedure ➤GetAndSetYesterdayValues
+    ie.open ‴http://www.x-rates.com/historical/?from=♥currFrom&amount=1&date=♥yesterday‴
+    ➜getAndSetYesterdayValues
+            excel.getvalue row ♥row colname b result ♥toCurr
+        jump ➜finish3 if ⊂string.IsNullOrEmpty(♥toCurr)⊃
+            ie.runscript ‴$('a[href="/graph/?from=♥currFrom&to=♥toCurr"]').eq(0).text()‴
+            ♥YesterdayValue = ⟦float⟧♥result
+            ♥YesterdayCol = ♥currFromCol + 1
+            excel.setvalue value ♥YesterdayValue row ♥row colindex ♥YesterdayCol
+            ♥row = ♥row + 1
+    jump ➜getAndSetYesterdayValues
+        ➜finish3
+    ♥row = 3
+    ie.close
+end
+```
+
+Let’s finish the last procedure that is left.
+Firstly, we should set new variable ♥percentChangeCol to ♥YesterdayCol increased by 1.
+
+```
+procedure ➤CalculatePercentChange
+    ♥percentChangeCol = ♥YesterdayCol + 1
+    
+end
+```
+
+To calculate percent change we do not have to open x-rates.com because we already have all the needed values.
+
+Now, let’s create a loop as in the previous procedures and make it not never-ending (remember we have to get value from the specified cell and set the condition that if there is no currency, stop the loop).
+
+```
+    ➜calculatePercentChange
+            excel.getvalue row ♥row colindex ♥TodayCol result ♥todayValue
+        jump ➜finish4 if ⊂string.IsNullOrEmpty(♥todayValue)⊃
+            
+            
+    jump ➜calculatePercentChange
+        ➜finish4
+ ```
+ 
+ After we get value from “Today” column, we should get also value from “Yesterday”.
+ 
+ ```
+ excel.getvalue row ♥row colindex ♥YesterdayCol result ♥YesterdayValue
+ ```
+ 
+ Now we can calculate the percent change:
+ 
+ ```
+ ♥percentChange = ‴=((♥todayValue - ♥YesterdayValue)/♥todayValue)‴
+ ```
+ 
+ Finally, let’s set value and increase variable ♥row by 1.
+
+This is the end of this Currency automation! 
+
+Thank you and hope to see you again.
+
+
 **Whole code:**
 ```
 ♥dataFile = ‴C:\Users\wikto\Documents\Currencies\update_currency.xlsx‴
