@@ -1,7 +1,7 @@
 Welcome to the 5th lesson!
 
 You’ve learned so much so far that this time we’ll try to do a little more complicated automation. Finally, a web one!
-Our aim is to fill in the following table in excel using data from <x-rates.com> in Internet Explorer.
+Our aim is to fill in the following table in excel using data from [The Objective-C Programming Language](http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjectiveC/Introduction/introObjectiveC.html) in Internet Explorer.
 
 
 
