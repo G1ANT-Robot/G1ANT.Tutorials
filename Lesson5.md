@@ -92,7 +92,109 @@ procedure ➤CalculatePercentChange
 end
 ```
 
+Let’s come back to our main function **➤Process**. We need to call these three functions here to let our loop **➜getCurrFrom** fill in these three columns.
+
 ```
+➜getCurrFrom
+            ♥row = 3
+            excel.getvalue row 1 colindex ♥currFromCol result ♥currFrom
+            call ➤GetAndSetTodayValues
+            call ➤GetAndSetYesterdayValues
+            call ➤CalculatePercentChange
+            ♥currFromCol = ♥currFromCol + 3
+    jump ➜getCurrFrom
+```
+
+Let’s add a **window** command to see how all the tables will be filling in by our Robot. Excel commands can work without bringing excel windows to the front that’s why this command is needed.
+
+```
+    window ‴update_currency - Excel‴
+    excel.getvalue row 1 colindex ♥currFromCol result ♥currFrom
+```
+
+To get the name of one window, we can simply open Tools, click Windows in the Menu or use CTRL+W shortcut, find a window that we are interested in and copy it. On the image below, look at the highlighted part.
+
+As you probably know, we have a never-ending loop between 8-14 lines. Let’s do something with it. The loop should end if the value in the first row is empty (there is no currency that we want to convert from).
+
+If we set the condition in the 14th line after **jump** command, we would also have to add another **excel.getvalue** before. But it would cause the G1ANT.Robot to get this currency value two times (once at the end of the loop and once at the beginning) and we do not want to do that. So, we will simply add a **➜finish1** label inside this loop.
+
+```
+➜getCurrFrom
+            ♥row = 3
+            window ‴update_currency - Excel‴
+            excel.getvalue row 1 colindex ♥currFromCol result ♥currFrom
+        jump ➜finish1 if ⊂string.IsNullOrEmpty(♥currFrom)==true⊃
+            call ➤GetAndSetTodayValues
+            call ➤GetAndSetYesterdayValues
+            call ➤CalculatePercentChange
+            ♥currFromCol = ♥currFromCol + 3
+    jump ➜getCurrFrom
+        jump ➜finish1
+```
+
+I have already formatted the code (added tabs). Let’s use C# macro and inside these *special round brackets* ⊂⊃ insert C# expression which allows us to get to know if there is another currency in the specified cell to convert from. If not, the script will jump to **➜finish1** label. 
+
+Finally, we can fill other procedures. What we have to do first, in the **➤GetAndSetTodayValues** is to open x-rates.com in the Internet Explorer. Remember what we’ve noticed about this website? We’ve seen that there is an algorithm in how the webpage’s links are made.  Let’s use this information and do this:
+
+```
+procedure ➤GetAndSetTodayValues
+    ie.open ‴http://www.x-rates.com/table/?from=♥currFrom&amount=1‴
+    
+    
+end
+```
+**♥currFrom** variable contains name of currency that we want to convert from therefore we can just use this variable inside this webpage link.
+
+In this procedure we also want to have a loop. Let’s create a **➜GetAndSetTodayValues** label.
+
+```
+ie.open ‴http://www.x-rates.com/table/?from=♥currFrom&amount=1‴
+➜getAndSetTodayValues
+
+
+jump ➜getAndSetTodayValues
+```
+In every procedure that gets and sets data into excel file, there has to be a **♥row** variable initially set to 3 because in all 3 procedures we start with row 3. So, let’s add this line in the main procedure **➤Process**. (look at the 9th line)
+
+```
+procedure ➤Process
+    excel.open ♥dataFile
+    ♥currFromCol = 3
+    ➜getCurrFrom
+            ♥row = 3
+            window ‴update_currency - Excel‴
+            excel.getvalue row 1 colindex ♥currFromCol result ♥currFrom
+        jump ➜finish1 if ⊂string.IsNullOrEmpty(♥currFrom)==true⊃
+            call ➤GetAndSetTodayValues
+            call ➤GetAndSetYesterdayValues
+            call ➤CalculatePercentChange
+            ♥currFromCol = ♥currFromCol + 3
+    jump ➜getCurrFrom
+        jump ➜finish1
+end
+```
+Let’s come back to the **➤GetAndSetTodayValues** procedure. We want to bring the excel window to the front, get value from “B” column to get to know the name of a currency that we want to convert to (we will name the result variable **♥toCurr**) and end this loop when there will be no more currencies in the “B” column. So, we type:
+
+```
+procedure ➤GetAndSetTodayValues
+ie.open ‴http://www.x-rates.com/table/?from=♥currFrom&amount=1‴
+    ➜getAndSetTodayValues
+            window ‴update_currency - Excel‴
+            excel.getvalue row ♥row colname b result ♥toCurr
+        jump ➜finish2 if ⊂string.IsNullOrEmpty(♥toCurr)⊃
+        
+        
+    jump ➜getAndSetTodayValues
+        ➜finish2
+end
+```
+
+Now we have to get the data from this website. How to do it?
+We need to explore the x-rates.com again.
+
+Let’s right click on the converted value from GBP to USD for instance. Then choose “Inspect element” to open Developer Tools. This is what we obtain: (how to attach image??)
+
+As you can see this element on the website can be found by “href” using this link in quotes. Let’s see if we are right. Click on the Console and using JQUERY expression, find this converted currency value.
 
 **Whole code:**
 ```
