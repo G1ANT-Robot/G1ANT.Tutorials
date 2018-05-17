@@ -30,7 +30,7 @@ call ➤NewExcelFile
 The first thing that this function will do is open the first file *data.xlsx*.
 
 ```
- excel.open path ♥datafile1 result ♥excelid1
+    excel.open ♥datafile1 result ♥excelid1
  ```
  
 All of the opened excel workbooks by G1ANT.Robot, have special ids set. So, we'll also add a result argument which lets us choose the name of the variable in which the id of the opened excel file is stored. The ids are useful when we want to switch between many different excel files.
@@ -38,7 +38,7 @@ All of the opened excel workbooks by G1ANT.Robot, have special ids set. So, we'l
 I'll use **dialog** command to show you what the result is and how the id looks. 
 
 ```
-dialog ♥excelid1
+   dialog ♥excelid1
 ```
 
 Let’s run this. In the pop-up window, some number should appear.
@@ -47,7 +47,7 @@ Now, let’s delete this line.
 Let’s write this line to open new empty excel file.
 
 ```
-excel.open result ♥excelid2
+   excel.open result ♥excelid2
 ```
 
 It'll be a lot easier if we add two more procedures. One which gets data from the first file, second which enters the data into another excel file.
@@ -128,13 +128,13 @@ end
 This narrow arrow **➜** lets us define the label that we named **➜GetAndSetValues**. To get our G1ANT.Robot jump to it we have to type:
 
 ```
-jump ➜GetAndSetValues
+   jump ➜GetAndSetValues
 ```
 
 Before the label we'll add new variable ♥i and set initial value 1 to it. It'll represent the row number in our excel files that will be processed at the time by G1ANT.Robot.
 
 ```
-♥i = 1
+   ♥i = 1
 ```
 
 Our program should get values from one row in the first excel file, then enter them into the corresponding line in the new excel file and do such action as many times as there are filled lines in the *data.xlsx* file. Therefore, it will have to call a procedure **➤GetValues** and **➤SetValues**. The value of the parameter **row** will be the value of the **♥i** variable. Every time the loop is done, the value of **♥i** will increase by 1 because it represents the row number.
@@ -144,22 +144,22 @@ Let’s format our code a little and add tabs in between labels.
 ```
 ♥i = 1
     ➜GetAndSetValues
-    call ➤GetValues row ♥i
-    call ➤SetValues row ♥i
-    ♥i = ♥i + 1
+       call ➤GetValues row ♥i
+       call ➤SetValues row ♥i
+       ♥i = ♥i + 1
     jump ➜GetAndSetValues
 ```
 
 Finally, we can set the number of times that the loop is executed because obviously this is a never-ending loop. As we can see in the file there are 5 lines therefore the loop has to be done 5 times. We can set the condition that the program will jump to the label as long as **♥i** variable is less than 6. The comparison **♥i** < 5 should be put in special round brackets ⊂⊃. To access them, go to *Insert* and choose them from the list or use shortcut Ctrl+9.
 
 ```
-jump ➜GetAndSetValues if ⊂♥i < 6⊃
+   jump ➜GetAndSetValues if ⊂♥i < 6⊃
 ```
 
 The last step is to save the new document as *data2.xlsx*.
 
 ```
-excel.save path ♥datafile2
+   excel.save path ♥datafile2
 ```
 
 Thank you for your time and I hope to see you again!
