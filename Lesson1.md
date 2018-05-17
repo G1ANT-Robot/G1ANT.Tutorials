@@ -11,7 +11,7 @@ Let’s input the first line of our script:
 ie.open ‴google.com‴ 
 ```
 
-**Ie.open** is a command, **google.com** is argument value. Arguments are placed in special characters. One of special characters is triple quotes, where we input text. To access Google website, we will input the weblink in triple quotes. We can do it in 2 ways: either by using shortcut CTRL+" or by clicking Insert and then choosing the character. Every character has its own shortcut. Shorts are accessible from the Insert within the Menu.
+**Ie.open** is a command, **google.com** is argument value. Arguments are placed in special characters. One of special characters is triple quotes, where we input text. To access Google website, we will input the weblink in triple quotes. We can do it in 2 ways: either by using shortcut CTRL+, or by clicking Insert and then choosing the character. Every character has its own shortcut. Shorts are accessible from the Insert within the Menu.
 
 You can decide whether you’d like your automation to operate at the background or display the windows. To see the automation in action, we will use **window** command just like this:
 
