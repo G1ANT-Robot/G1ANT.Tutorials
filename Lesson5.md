@@ -7,6 +7,16 @@ The excel template is available [here](update_currency.xlsx).
 
 Firstly, we should create a new variable containing the path to this file.
 
+```
+♥dataFile = ‴C:\Users\wikto\Documents\Currencies\update_currency.xlsx‴
+```
+
+Very often we need to use other programming languages in G1ANT.Robot such as C#, JQuery or JavaScript because it is helpful or easy to us.
+In this type of automation, we have to focus on algorithms in a website. 
+When we have a little more complex automation to do, it is better to firstly come up with the best idea how to do it before we write anything.
+
+Let’s investigate the x-rates.com website. Look at the url for Polish Zloty rates table: [http://www.x-rates.com/table/?from=PLN&amount=1](http://www.x-rates.com/table/?from=PLN&amount=1).
+
 **Whole code:**
 ```
 ♥dataFile = ‴C:\Users\wikto\Documents\Currencies\update_currency.xlsx‴
