@@ -99,8 +99,70 @@ procedure ➤GetValues row ‴‴
 end
 ```
 
-Similarly, we’ll do the **➤SetValues** procedure. We only need to change the id in excel.switch command and replace all numbers after each row argument with variable ♥row. Let’s copy it from previous script and paste it here.
+Similarly, we’ll do the **➤SetValues** procedure. We only need to change the id in excel.switch command and replace all numbers after each row argument with variable **♥row**. Let’s copy it from previous script and paste it here.
 
+```
+procedure ➤SetValues row ‴‴
+    excel.switch ♥excelid2
+    excel.setvalue value ♥title1 row ♥row colname a 
+    excel.setvalue value ♥title2 row ♥row colname b 
+    excel.setvalue value ♥title3 row ♥row colname c 
+    excel.setvalue value ♥title4 row ♥row colname d 
+    excel.setvalue value ♥title5 row ♥row colname e 
+    excel.setvalue value ♥title6 row ♥row colname f 
+end
+```
+
+We've created all needed small functions, so we can come back to our main **➤NewExcelFile** procedure and finally create our loop.
+
+Before we create a loop, I'd like to tell you something about **jump** command. As you probably imagine, it simply jumps to some specially defined place in the code and runs the script from that place. It jumps back or forward having missed lines of code in between. To set the place where the jump command will jump, we need to define a **label**. We'll use another special character which, again, you can access by clicking Insert in the menu and choosing it from the list or using keyboard shortcut CTRL+2.
+
+```
+procedure ➤NewExcelFile
+    excel.open path ♥datafile1 result ♥excelid1
+    excel.open result ♥excelid2
+    ➜GetAndSetValues
+end
+```
+
+This narrow arrow **➜** lets us define the label that we named **➜GetAndSetValues**. To get our G1ANT.Robot jump to it we have to type:
+
+```
+jump ➜GetAndSetValues
+```
+
+Before the label we'll add new variable ♥i and set initial value 1 to it. It'll represent the row number in our excel files that will be processed at the time by G1ANT.Robot.
+
+```
+♥i = 1
+```
+
+Our program should get values from one row in the first excel file, then enter them into the corresponding line in the new excel file and do such action as many times as there are filled lines in the *data.xlsx* file. Therefore, it will have to call a procedure **➤GetValues** and **➤SetValues**. The value of the parameter **row** will be the value of the **♥i** variable. Every time the loop is done, the value of **♥i** will increase by 1 because it represents the row number.
+
+Let’s format our code a little and add tabs in between labels.
+
+```
+♥i = 1
+    ➜GetAndSetValues
+    call ➤GetValues row ♥i
+    call ➤SetValues row ♥i
+    ♥i = ♥i + 1
+    jump ➜GetAndSetValues
+```
+
+Finally, we can set the number of times that the loop is executed because obviously this is a never-ending loop. As we can see in the file there are 5 lines therefore the loop has to be done 5 times. We can set the condition that the program will jump to the label as long as **♥i** variable is less than 6. The comparison **♥i** < 5 should be put in special round brackets ⊂⊃. To access them, go to *Insert* and choose them from the list or use shortcut Ctrl+9.
+
+```
+jump ➜GetAndSetValues if ⊂♥i < 6⊃
+```
+
+The last step is to save the new document as *data2.xlsx*.
+
+```
+excel.save path ♥datafile2
+```
+
+Thank you for your time and I hope to see you again!
 
 **Whole code:**
 ```
