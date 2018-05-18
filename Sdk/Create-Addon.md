@@ -36,3 +36,7 @@
 9. Do the same with **G1ANT.Addon.AddonName.Tests** project (repeat steps 1..8)
 
 You're ready.
+
+## Step XXX - Prepare Addon to work
+
+1. Rename file *AddonNameAddon.cs** to **Addon.cs** in Visual Studio
