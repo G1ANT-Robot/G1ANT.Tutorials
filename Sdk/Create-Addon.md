@@ -10,3 +10,4 @@
 5. Check **Create directory for solution**
 6. Check **Create new Git repository**
 7. Attention - project name should be the same as solution name
+8. 
