@@ -69,7 +69,7 @@
 
 1. Rename file **AddonNameAddon.cs** to **Addon.cs** in Visual Studio
 
-## Step 7 - Push solution to GITHub
+## Step 7 - Push solution to GitHub
 
 1. Right click on the solution name
 2. Click **Commit**
@@ -79,4 +79,19 @@
 6. Choose **G1ANT-Robot**
 7. Uncheck **Private Repository**
 8. Click **Publish**
-9. Check the repository on the https://github.com/G1ANT-Robot/G1ANT.Addon.AddonName
+
+## Step 8 - After publish
+
+1. Go to the repository on the GitHub https://github.com/G1ANT-Robot/G1ANT.Addon.AddonName
+2. Click **Add a README** 
+3. Click **Commit new file**
+4. Click **Create new file**
+5. Enter **LICENSE.md**
+6. Click **Choose a license template**
+7. Click **GNU Lesser General Public License v3.0**
+8. Click **Review and Summit**
+9. Enter **LICENSE.md** (instead of LICENSE, remember about extension **.md**)
+10. Click **Commit new file**
+11. Click **Create pull request**
+12. Click **Create merge pull request**
+13. Click **Confirm merge**
