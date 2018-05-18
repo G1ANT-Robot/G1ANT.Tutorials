@@ -31,6 +31,7 @@
 5. Choose **Apply to all items** and click **Yes**
 6. Click **File -> Close Solution**
 7. Save changes -> click **Yes**
-
+8. Copy old file **ProjectName.csproj** (for example ```G1ANT.Addon.GoogleDocs.csproj```) from old repository to the new repository outside the Visual Studio (by **Windows File Explorer**)
+9. Do the same with **G1ANT.Addon.AddonName.Tests** project (repeat steps 1..8)
 
 You're ready.
