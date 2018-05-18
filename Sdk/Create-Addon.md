@@ -15,15 +15,19 @@
 
 ## Step 2 - Create unit tests
 
-3. Right click on the solution name
-4. Click **Add -> New Project...**
-5. Enter test project name in format **G1ANT.Addon.AddonName.Tests** (for example ```G1ANT.Addon.GoogleDocs.Tests```)
-6. Choose project type as **Unit Test Project (.NET Framework) - Visual C#**
-7. Choose **.NET Framework 4.6.1**
-8. Delete **UnitTest1.cs** file
+1. Right click on the solution name
+2. Click **Add -> New Project...**
+3. Enter test project name in format **G1ANT.Addon.AddonName.Tests** (for example ```G1ANT.Addon.GoogleDocs.Tests```)
+4. Choose project type as **Unit Test Project (.NET Framework) - Visual C#**
+5. Choose **.NET Framework 4.6.1**
+6. Delete **UnitTest1.cs** file
+
+## Step 3 - Optional (if you have to copy files from old repository)
+
+1. Go to old repository, select all files and folders to copy (except **bin**, **obj** and **ProjectName.csproj**)
+2. Press **<Ctrl+C>** to copy all files to clipboard
+3. Go to Solution Explorer and click project name
+4. 
+
 
 You're ready.
-
-----------------------------
-
-## (Optionally) Step 3 - Copy all files from
