@@ -39,4 +39,4 @@ You're ready.
 
 ## Step XXX - Prepare Addon to work
 
-1. Rename file *AddonNameAddon.cs** to **Addon.cs** in Visual Studio
+1. Rename file **AddonNameAddon.cs** to **Addon.cs** in Visual Studio
