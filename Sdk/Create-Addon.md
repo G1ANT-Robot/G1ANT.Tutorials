@@ -26,8 +26,11 @@
 
 1. Go to old repository, select all files and folders to copy (except **bin**, **obj** and **ProjectName.csproj**)
 2. Press **<Ctrl+C>** to copy all files to clipboard
-3. Go to Solution Explorer and click project name
-4. 
+3. Go to Solution Explorer and click project name  (for example ```G1ANT.Addon.GoogleDocs```)
+4. Press **<Ctrl+V>**
+5. Choose **Apply to all items** and click **Yes**
+6. Click **File -> Close Solution**
+7. Save changes -> click **Yes**
 
 
 You're ready.
