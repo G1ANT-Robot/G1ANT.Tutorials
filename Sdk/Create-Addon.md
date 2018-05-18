@@ -95,3 +95,9 @@
 11. Click **Create pull request**
 12. Click **Create merge pull request**
 13. Click **Confirm merge**
+14. Click **Add Topics**
+15. Enter **g1ant robot robotic rpa**
+16. Click **Edit** (description)
+17. Enter description of the Add-On
+18. Enter website: https://beta.g1ant.com
+19. Click **Save**
