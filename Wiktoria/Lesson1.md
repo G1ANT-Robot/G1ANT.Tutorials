@@ -7,7 +7,7 @@ In the 1st tutorial we will automate searching G1ANT website using Internet Expl
 
 Let’s input the first line of our script:
 
-```
+```G1ANT
 ie.open ‴google.com‴ 
 ```
 
@@ -15,7 +15,7 @@ ie.open ‴google.com‴
 
 You can decide whether you’d like your automation to operate at the background or display the windows. To see the automation in action, we will use **window** command just like this:
 
-```
+```G1ANT
 window ‴Google - Internet Explorer‴	 
 ```
 
@@ -25,13 +25,13 @@ Now, our Internet Explorer instance is brought to the front.
 
 Let’s maximise our screen. We will input keyboard command and argument value. Using your keyboard, insert *triple angle brackets* (another special character type in G1ANT) which makes the robot use buttons to use a shortcut. Now type in win+up without spaces. 
 
-```
+```G1ANT
 keyboard ⋘win+up⋙
 ```
 
 The quickest way to activate the cursor in search box, is to refresh the website by using F5. Let’s input **keyboard** command, *triple angle brackets* and type f5. 
 
-```
+```G1ANT
 keyboard ⋘f5⋙
 ```
 
@@ -39,13 +39,13 @@ G1ANT.Robot has built-in intellisense (or intelligent code completion), which ma
 
 To search for G1ANT website, we need to type in G1ANT in Google search and type ENTER within *triple angle brackets* to press enter button. 
 
-```
+```G1ANT
 keyboard G1ANT⋘enter⋙
 ```
 
 Let's launch the first part of the robot by either pressing the play button or simply by pressing F9 key on your keyboard. Now that the robot displayed the results, we can see that G1ANT website is at the top. And for the robot to click on the link, we need to use the mouse click command to get the position of the screen where the website is located. Input **mouse.click** command, then Insert and choose Mouse Position, say Yes to Absolute position (By the way, we choose absolute position, not relative to the active window). Now, using your mouse or mousepad navigate to G1ANT website and click on the link. As you can see, this has automatically inputted mouse position in your robot script. 
 
-```
+```G1ANT
 mouse.click ⟦point⟧144⫽214
 ```
 
@@ -55,7 +55,7 @@ Let’s save our script for future use. We want to click Task/Save and call it R
 
 
 **Whole code:**
-```
+```G1ANT
 ie.open ‴google.com‴
 window ‴Google - Internet Explorer‴
 keyboard ⋘win+up⋙
