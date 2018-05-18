@@ -1,3 +1,3 @@
 # Sdk
 
-1. [Create G1ANT.AddOn](Create-AddOn.md)
+1. [How to create G1ANT Add-On](Create-AddOn.md)
