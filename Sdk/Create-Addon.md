@@ -1,6 +1,9 @@
 
 # How to create G1ANT Add-On
 
+Required:
+1. GitHub Extension
+
 ## Step 1 - Create Solution
 
 1. Click **File -> New -> Project <Ctrl+Shift+N>**
