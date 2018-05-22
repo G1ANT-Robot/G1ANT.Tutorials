@@ -26,8 +26,7 @@ excel, call, jump, procedure
 * commands used:
 ie, window, excel, jump, call
 
-# [Lesson 6](Lesson6.md)
-## Exercises
+# [Lesson 6 - Exercises](Lesson6.md)
 * web automations!
 * commands used:
 xlsx, jump, dialog, call, ie, selenium, keyboard
