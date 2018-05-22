@@ -1,6 +1,7 @@
 ## EXERCISES
 
 **Exercise 1:**
+
 Using Robot:
 1.	Open web browser
 2.	Go to youtube.com
@@ -9,9 +10,11 @@ Using Robot:
 5.	Close web browser
 
 **Exercise 2:**
+
 Using robot and your favourite search engine look for “robotic process automation” 
 
 **Exercise 3:**
+
 Create an excel and copy paste this list:
 
 “LIST”
