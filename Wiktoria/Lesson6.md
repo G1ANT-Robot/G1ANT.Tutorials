@@ -1,6 +1,6 @@
-EXERCISES
+## EXERCISES
 
-Exercise 1
+**Exercise 1:**
 Using Robot:
 1.	Open web browser
 2.	Go to youtube.com
@@ -9,10 +9,10 @@ Using Robot:
 5.	Close web browser
 
  
-Exercise 2
+**Exercise 2:**
 Using robot and your favourite search engine look for “robotic process automation” 
 
-Exercise 3
+**Exercise 3:**
 Create an excel and copy paste this list:
 
 “LIST”
@@ -33,9 +33,9 @@ All that was in exercise 2 and:
 4.	Create new exel file and save there 5 best results. Remember to take into consideration case where there are not enough results fulfilling given criteria. 
 5.	Send an email with all the data
  
-SAMPLE ANSWERS:
+## SAMPLE ANSWERS:
 
-Exercise 1
+**Exercise 1:**
 ```
 selenium.open ‴chrome‴ url ‴youtube.com‴ 
 selenium.runscript ‴return document.getElementById("video-title").innerText‴ result ♥songname errormessage ‴no song detected‴ 
@@ -43,7 +43,7 @@ dialog ‴Todays's song is: ♥songname‴
 selenium.close
 ```
 
-Exercise 2
+**Exercise 2:**
 ```
 selenium.open type ‴chrome‴ url ‴google.com‴
 selenium.waitforvalue script ‴document.guerySelectorAll('#1st-ib').1ength > 0‴ expectedvalue ‴true‴
@@ -52,7 +52,7 @@ keyboard ⋘ENTER⋙
 dialog ‴done‴
 ```
 
-Exercise 3
+**Exercise 3:**
 ```
 xlsx.open ‴C:\Users\wikto\Documents\Book1.xlsx‴
 ♥row = 2
