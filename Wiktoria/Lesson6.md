@@ -8,7 +8,6 @@ Using Robot:
 4.	Display song name in a dialog window
 5.	Close web browser
 
- 
 **Exercise 2:**
 Using robot and your favourite search engine look for “robotic process automation” 
 
