@@ -1,6 +1,6 @@
 # Lesson 1 - First script
 
-Hi, let's auotmate something. 
+Hi, let's automate something. 
 As you probably know, robotic process automation is the fastest way to control any desktop and web application,
 even without strictly defined API.
 
