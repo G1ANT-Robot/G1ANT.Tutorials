@@ -38,7 +38,7 @@ All that was in exercise 2 and:
 ## SAMPLE ANSWERS:
 
 **Exercise 1:**
-```
+```G1ANT
 selenium.open ‴chrome‴ url ‴youtube.com‴ 
 selenium.runscript ‴return document.getElementById("video-title").innerText‴ result ♥songname errormessage ‴no song detected‴ 
 dialog ‴Todays's song is: ♥songname‴ 
@@ -46,7 +46,7 @@ selenium.close
 ```
 
 **Exercise 2:**
-```
+```G1ANT
 selenium.open type ‴chrome‴ url ‴google.com‴
 selenium.waitforvalue script ‴document.guerySelectorAll('#1st-ib').1ength > 0‴ expectedvalue ‴true‴
 selenium.type text ‴robotic process automation‴ search ‴1st-ib‴ by ‴id‴ 
@@ -55,7 +55,7 @@ dialog ‴done‴
 ```
 
 **Exercise 3:**
-```
+```G1ANT
 xlsx.open ‴C:\Users\wikto\Documents\Book1.xlsx‴
 ♥row = 2
  
