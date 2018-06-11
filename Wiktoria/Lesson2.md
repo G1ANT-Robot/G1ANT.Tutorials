@@ -14,20 +14,20 @@ In order to scroll the whole website, we can get the position of the scroll bar 
 
 Argument *button* lets us choose which mouse button will be pressed - left or right and argument *type* tells the computer whether it will be pressed (down) or just left not pressed (up).
 
-```
+```G1ANT
 mouse.click position ‴1430⫽115‴ button left type down
 ```
 
 We get the position of the scroll at the bottom and it should look like this. Note that sometimes mouse action can be as quick that it will be necessary to slow it down as some website might not be able to get input due to not having loaded yet. Therefore **mousedelay** argument is needed which specifies time within a mouse should perform some action. Let's choose 1500 milliseconds for example.
 
-```
+```G1ANT
 mouse.click position ‴1429⫽780‴ button left type up mousedelay 1500
 ```
 
 That is the end of this automation, it searched for G1ANT website using Internet Explorer and Google Search, opened it and explored so that the user could read it.
 
 **Whole code:**
-```
+```G1ANT
 ie.open ‴google.com‴
 window ‴Google - Internet Explorer‴
 keyboard ⋘win+up⋙
