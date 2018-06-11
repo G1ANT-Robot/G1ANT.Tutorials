@@ -7,7 +7,7 @@ The excel template is available [here](update_currency.xlsx).
 
 Firstly, we should create a new variable containing the path to this file.
 
-```
+```G1ANT
 ♥dataFile = ‴C:\Users\wikto\Documents\Currencies\update_currency.xlsx‴
 ```
 
@@ -27,7 +27,7 @@ As you probably imagine, it is best to create one main function (procedure) and 
 Okay, once we have the general idea, we can start to code.
 Let’s create one main function that I will name simply a Process.
 
-```
+```G1ANT
 call ➤Process
 
 procedure ➤Process
@@ -36,9 +36,10 @@ procedure ➤Process
 
 end
 ```
+
 Let’s open **♥dataFile**.
 
-```
+```G1ANT
 call ➤Process
 
 procedure ➤Process
@@ -50,7 +51,7 @@ end
 
 Now, we set a label to create a loop in which we will fill in the whole table of GBP, then PLN etc.
 
-```
+```G1ANT
     excel.open ♥dataFile
     ➜getCurrFrom
     
@@ -61,7 +62,7 @@ The first thing that we want to do is get value from the merged cells in the fir
 
 The number of row is not going to change within this loop but number of column – yes. So, let’s create **♥currFromCol** variable set to 3 before our loop because we don’t want our loop to reset the value for this variable each time the loop is done. It should increase each time by 3 because there are 3 of merged cells (column Today, Yesterday and Percent Change). Our result is going to be stored in **♥currFrom** variable.
 
-```
+```G1ANT
     ♥currFromCol = 3
     ➜getCurrFrom
             excel.getvalue row 1 colindex ♥currFromCol result ♥currFrom
@@ -71,7 +72,7 @@ The number of row is not going to change within this loop but number of column �
 
 Let’s create three more procedures to fill each of those columns separately.
 
-```
+```G1ANT
 procedure ➤GetAndSetTodayValues
 
 
@@ -94,7 +95,7 @@ end
 
 Let’s come back to our main function **➤Process**. We need to call these three functions here to let our loop **➜getCurrFrom** fill in these three columns.
 
-```
+```G1ANT
 ➜getCurrFrom
             ♥row = 3
             excel.getvalue row 1 colindex ♥currFromCol result ♥currFrom
@@ -107,7 +108,7 @@ Let’s come back to our main function **➤Process**. We need to call these thr
 
 Let’s add a **window** command to see how all the tables will be filling in by our Robot. Excel commands can work without bringing excel windows to the front that’s why this command is needed.
 
-```
+```G1ANT
     window ‴update_currency - Excel‴
     excel.getvalue row 1 colindex ♥currFromCol result ♥currFrom
 ```
@@ -118,7 +119,7 @@ As you probably know, we have a never-ending loop between 8-14 lines. Let’s do
 
 If we set the condition in the 14th line after **jump** command, we would also have to add another **excel.getvalue** before. But it would cause the G1ANT.Robot to get this currency value two times (once at the end of the loop and once at the beginning) and we do not want to do that. So, we will simply add a **➜finish1** label inside this loop.
 
-```
+```G1ANT
 ➜getCurrFrom
             ♥row = 3
             window ‴update_currency - Excel‴
@@ -136,7 +137,7 @@ I have already formatted the code (added tabs). Let’s use C# macro and inside 
 
 Finally, we can fill other procedures. What we have to do first, in the **➤GetAndSetTodayValues** is to open x-rates.com in the Internet Explorer. Remember what we’ve noticed about this website? We’ve seen that there is an algorithm in how the webpage’s links are made.  Let’s use this information and do this:
 
-```
+```G1ANT
 procedure ➤GetAndSetTodayValues
     ie.open ‴http://www.x-rates.com/table/?from=♥currFrom&amount=1‴
     
@@ -147,16 +148,17 @@ end
 
 In this procedure we also want to have a loop. Let’s create a **➜GetAndSetTodayValues** label.
 
-```
+```G1ANT
 ie.open ‴http://www.x-rates.com/table/?from=♥currFrom&amount=1‴
 ➜getAndSetTodayValues
 
 
 jump ➜getAndSetTodayValues
 ```
+
 In every procedure that gets and sets data into excel file, there has to be a **♥row** variable initially set to 3 because in all 3 procedures we start with row 3. So, let’s add this line in the main procedure **➤Process**. (look at the 9th line)
 
-```
+```G1ANT
 procedure ➤Process
     excel.open ♥dataFile
     ♥currFromCol = 3
@@ -173,9 +175,10 @@ procedure ➤Process
         jump ➜finish1
 end
 ```
+
 Let’s come back to the **➤GetAndSetTodayValues** procedure. We want to bring the excel window to the front, get value from “B” column to get to know the name of a currency that we want to convert to (we will name the result variable **♥toCurr**) and end this loop when there will be no more currencies in the “B” column. So, we type:
 
-```
+```G1ANT
 procedure ➤GetAndSetTodayValues
 ie.open ‴http://www.x-rates.com/table/?from=♥currFrom&amount=1‴
     ➜getAndSetTodayValues
@@ -199,19 +202,19 @@ As you can see this element on the website can be found by “href” using this
 As you can see, comparing obtained values to those above in the table, we know that there is an algorithm which we can use in our automation.
 Using **ie.runscript** command and entering these JQUERY expressions as argument values will get us the result we want. Don’t know if I already told you so but we do not have to set the name of the variable where we store the results. It will be named by default a **♥result**.
 
-```
+```G1ANT
 ie.runscript ‴$('a[href="/graph/?from=♥currFrom&to=♥toCurr"]').eq(0).text()‴
 ```
 
 Now we have to convert the result value to float type (type which allows us to have numbers with decimal places).
 
-```
+```G1ANT
  ♥TodayValue = ⟦float⟧♥result
  ```
  
 The last thing is to set new variable **♥TodayCol** to **♥currFromCol** just to make our code clearer next time we come back to it, set **♥TodayValue** to the specified cell and increase **♥row** by 1 because this loop fill is in Today Column row by row.
 
-```
+```G1ANT
 ➜getAndSetTodayValues
             window ‴update_currency - Excel‴
             excel.getvalue row ♥row colname b result ♥toCurr
@@ -226,7 +229,7 @@ The last thing is to set new variable **♥TodayCol** to **♥currFromCol** just
 
 Let’s reset the variable ♥row back to 3 and close Internet Explorer.
 
-```
+```G1ANT
     ♥row = 3
     ie.close
 ```
@@ -240,13 +243,13 @@ Probably we can access other webpages like this by changing only the date and cu
 
 In order to get the yesterday date, we can just add the following line of code at the beginning with the C# expression.
 
-```
+```G1ANT
 ♥yesterday = ⟦text⟧System.DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd")
 ```
 
 This is show the ➤GetAndSetYesterdayValues should look.
 
-```
+```G1ANT
 procedure ➤GetAndSetYesterdayValues
     ie.open ‴http://www.x-rates.com/historical/?from=♥currFrom&amount=1&date=♥yesterday‴
     ➜getAndSetYesterdayValues
@@ -267,7 +270,7 @@ end
 Let’s finish the last procedure that is left.
 Firstly, we should set new variable ♥percentChangeCol to ♥YesterdayCol increased by 1.
 
-```
+```G1ANT
 procedure ➤CalculatePercentChange
     ♥percentChangeCol = ♥YesterdayCol + 1
     
@@ -278,7 +281,7 @@ To calculate percent change we do not have to open x-rates.com because we alread
 
 Now, let’s create a loop as in the previous procedures and make it not never-ending (remember we have to get value from the specified cell and set the condition that if there is no currency, stop the loop).
 
-```
+```G1ANT
     ➜calculatePercentChange
             excel.getvalue row ♥row colindex ♥TodayCol result ♥todayValue
         jump ➜finish4 if ⊂string.IsNullOrEmpty(♥todayValue)⊃
@@ -290,13 +293,13 @@ Now, let’s create a loop as in the previous procedures and make it not never-e
  
  After we get value from “Today” column, we should get also value from “Yesterday”.
  
- ```
+ ```G1ANT
  excel.getvalue row ♥row colindex ♥YesterdayCol result ♥YesterdayValue
  ```
  
  Now we can calculate the percent change:
  
- ```
+ ```G1ANT
  ♥percentChange = ‴=((♥todayValue - ♥YesterdayValue)/♥todayValue)‴
  ```
  
@@ -308,7 +311,7 @@ Thank you and hope to see you again.
 
 
 **Whole code:**
-```
+```G1ANT
 ♥dataFile = ‴C:\Users\wikto\Documents\Currencies\update_currency.xlsx‴
 ♥yesterday = ⟦text⟧System.DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd")
 call ➤Process
