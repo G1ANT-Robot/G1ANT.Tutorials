@@ -312,6 +312,7 @@ Thank you and hope to see you again.
 
 **Whole code:**
 ```G1ANT
+♥timeout = ⟦integer⟧180000000
 ♥dataFile = ‴C:\Users\wikto\Documents\Currencies\update_currency.xlsx‴
 ♥yesterday = ⟦text⟧System.DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd")
 call ➤Process
@@ -328,19 +329,20 @@ procedure ➤Process
             call ➤CalculatePercentChange
             ♥currFromCol = ♥currFromCol + 3
     jump ➜getCurrFrom
-        jump ➜finish1
+        ➜finish1
 end
+
 procedure ➤GetAndSetTodayValues
     ie.open ‴http://www.x-rates.com/table/?from=♥currFrom&amount=1‴
     ➜getAndSetTodayValues
             window ‴update_currency - Excel‴
             excel.getvalue row ♥row colname b result ♥toCurr
         jump ➜finish2 if ⊂string.IsNullOrEmpty(♥toCurr)⊃
-        ie.runscript ‴$('a[href="/graph/?from=♥currFrom&to=♥toCurr"]').eq(0).text()‴
-        ♥TodayValue = ⟦float⟧♥result
-        ♥TodayCol = ♥currFromCol
-        excel.setvalue value ♥TodayValue row ♥row colindex ♥TodayCol
-        ♥row = ♥row + 1
+            ie.runscript ‴$('a[href="http://www.x-rates.com/graph/?from=♥currFrom&to=♥toCurr"]').eq(0).text()‴
+            ♥TodayValue = ⟦float⟧♥result
+            ♥TodayCol = ♥currFromCol
+            excel.setvalue value ♥TodayValue row ♥row colindex ♥TodayCol
+            ♥row = ♥row + 1
     jump ➜getAndSetTodayValues
         ➜finish2
     ♥row = 3
@@ -351,7 +353,7 @@ procedure ➤GetAndSetYesterdayValues
     ➜getAndSetYesterdayValues
             excel.getvalue row ♥row colname b result ♥toCurr
         jump ➜finish3 if ⊂string.IsNullOrEmpty(♥toCurr)⊃
-            ie.runscript ‴$('a[href="/graph/?from=♥currFrom&to=♥toCurr"]').eq(0).text()‴
+            ie.runscript ‴$('a[href="http://www.x-rates.com/graph/?from=♥currFrom&to=♥toCurr"]').eq(0).text()‴
             ♥YesterdayValue = ⟦float⟧♥result
             ♥YesterdayCol = ♥currFromCol + 1
             excel.setvalue value ♥YesterdayValue row ♥row colindex ♥YesterdayCol
