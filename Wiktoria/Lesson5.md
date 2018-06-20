@@ -49,7 +49,7 @@ procedure ➤Process
 end
 ```
 
-Now, we set a label to create a loop in which we will fill in the whole table of GBP, then PLN etc.
+Now, we set a label to create a loop which will fill in the whole table of GBP, then PLN etc.
 
 ```G1ANT
     excel.open ♥dataFile
@@ -77,7 +77,6 @@ procedure ➤GetAndSetTodayValues
 
 
 
-
 end
 
 procedure ➤GetAndSetYesterdayValues
@@ -88,7 +87,7 @@ end
 
 procedure ➤CalculatePercentChange
     
-    
+       
     
 end
 ```
@@ -203,13 +202,13 @@ As you can see, comparing obtained values to those above in the table, we know t
 Using **ie.runscript** command and entering these JQUERY expressions as argument values will get us the result we want. Don’t know if I already told you so but we do not have to set the name of the variable where we store the results. It will be named by default a **♥result**.
 
 ```G1ANT
-ie.runscript ‴$('a[href="/graph/?from=♥currFrom&to=♥toCurr"]').eq(0).text()‴
+        ie.runscript ‴$('a[href="http://www.x-rates.com/graph/?from=♥currFrom&to=♥toCurr"]').eq(0).text()‴      
 ```
 
 Now we have to convert the result value to float type (type which allows us to have numbers with decimal places).
 
 ```G1ANT
- ♥TodayValue = ⟦float⟧♥result
+        ♥TodayValue = ⟦float⟧♥result
  ```
  
 The last thing is to set new variable **♥TodayCol** to **♥currFromCol** just to make our code clearer next time we come back to it, set **♥TodayValue** to the specified cell and increase **♥row** by 1 because this loop fill is in Today Column row by row.
@@ -225,6 +224,7 @@ The last thing is to set new variable **♥TodayCol** to **♥currFromCol** just
             excel.setvalue value ♥TodayValue row ♥row colindex ♥TodayCol
             ♥row = ♥row + 1
     jump ➜getAndSetTodayValues
+        ➜finish2
 ```
 
 Let’s reset the variable ♥row back to 3 and close Internet Explorer.
@@ -255,7 +255,7 @@ procedure ➤GetAndSetYesterdayValues
     ➜getAndSetYesterdayValues
             excel.getvalue row ♥row colname b result ♥toCurr
         jump ➜finish3 if ⊂string.IsNullOrEmpty(♥toCurr)⊃
-            ie.runscript ‴$('a[href="/graph/?from=♥currFrom&to=♥toCurr"]').eq(0).text()‴
+            ie.runscript ‴$('a[href="http://www.x-rates.com/graph/?from=♥currFrom&to=♥toCurr"]').eq(0).text()‴
             ♥YesterdayValue = ⟦float⟧♥result
             ♥YesterdayCol = ♥currFromCol + 1
             excel.setvalue value ♥YesterdayValue row ♥row colindex ♥YesterdayCol
@@ -279,7 +279,7 @@ end
 
 To calculate percent change we do not have to open x-rates.com because we already have all the needed values.
 
-Now, let’s create a loop as in the previous procedures and make it not never-ending (remember we have to get value from the specified cell and set the condition that if there is no currency, stop the loop).
+Now, let’s create a loop as in the previous procedures and make it not never-ending (remember we have to get value from the specified cell and set the condition that if there is no currency, stop the loop). Remember that variable ♥row needs to increase by 1 in every execution of a loop.
 
 ```G1ANT
     ➜calculatePercentChange
@@ -287,6 +287,7 @@ Now, let’s create a loop as in the previous procedures and make it not never-e
         jump ➜finish4 if ⊂string.IsNullOrEmpty(♥todayValue)⊃
             
             
+            ♥row = ♥row + 1
     jump ➜calculatePercentChange
         ➜finish4
  ```
@@ -294,13 +295,14 @@ Now, let’s create a loop as in the previous procedures and make it not never-e
  After we get value from “Today” column, we should get also value from “Yesterday”.
  
  ```G1ANT
- excel.getvalue row ♥row colindex ♥YesterdayCol result ♥YesterdayValue
+        excel.getvalue row ♥row colindex ♥YesterdayCol result ♥YesterdayValue
  ```
  
- Now we can calculate the percent change:
+ Now we can calculate the percent change and set the result in excel:
  
  ```G1ANT
- ♥percentChange = ‴=((♥todayValue - ♥YesterdayValue)/♥todayValue)‴
+        ♥percentChange = ‴=((♥todayValue - ♥YesterdayValue)/♥todayValue)‴
+        excel.setvalue value ♥percentChange row ♥row colindex ♥percentChangeCol
  ```
  
  Finally, let’s set value and increase variable ♥row by 1.
