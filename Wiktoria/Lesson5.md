@@ -3,7 +3,7 @@ Welcome to the 5th lesson!
 You’ve learned so much so far that this time we’ll try to do a little more complicated automation. Finally, a web one!
 Our aim is to fill in the following table in excel using data from [x-rates.com](https://x-rates.com/) in Internet Explorer.
 
-The excel template is available [here](update_currency.xlsx).
+The excel template is available [here](https://github.com/G1ANT-Robot/G1ANT.Tutorials/blob/master/update_currency.xlsx).
 
 Firstly, we should create a new variable containing the path to this file.
 
