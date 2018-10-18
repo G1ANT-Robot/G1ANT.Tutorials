@@ -1,0 +1,5 @@
+Welcome to G1ANT.Robot Tutorials!
+
+Since you are here, you are certainly aware of our robot's power. Here we will help you to unleash it easily, quickly and efficiently. Let's start robotizing!
+
+The robot listens to your commands - or rather reads them from the main script window. You can tell the robot to open a program, use a virtual keyboard or perform file operations, for example. All available commands are listed in the Commands pane 
