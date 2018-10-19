@@ -17,7 +17,6 @@ Now press **F9** key or select Run from Debug menu. Notepad opens and waits for 
 Sending keyboard inputs to a program is easy and requires the `keyboard` command followed by the text to be entered or keyboard shortcuts/function keys to be mimicked by the robot. In this example, make the robot write:
 
 **Hello!**
-
 **I am robot.**
 
 In the next line after your existing `program notepad` command, type:
