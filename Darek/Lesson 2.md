@@ -19,10 +19,10 @@ keyboard ⋘alt+o⋙w
 
 Let's make something more powerful and robotized out of these keyboard inputs: select all notepad content and change its font size to 20. The keyboard shortcuts sequence would be:
 
-1 Press **Alt+F** to open the `Format` menu.
-2 Press **o** to select Font tool and bring out its dialog.
-3 Press **Tab** twice to navigate to the font size box.
-4 Enter the value of **20**.
+1. Press **Alt+F** to open the `Format` menu.
+2. Press **o** to select Font tool and bring out its dialog.
+3. Press **Tab** twice to navigate to the font size box.
+4. Enter the value of **20**.
 
 The robot code would be as follows:
 
@@ -32,10 +32,10 @@ keyboard ⋘alt+o⋙f⋘tab 2⋙20⋘enter⋙
 
 You can use such combination of keyboard shortcuts and keystrokes to perform more advanced editing — for example, to find and replace some words or phrases. Say, you would want to change all instances of _robot_ in your Notepad text into _G1ANT.Robot_:
 
-1 Bring up the Replace tool with **Ctrl+H**.
-2 In Replace dialog, enter **robot** in the Find box and **G1ANT.Robot** in the Replace box.
-3 Apply changes by pressing **Replace All** button.
-4 Close the dialog with **Alt+F4**.
+1. Bring up the Replace tool with **Ctrl+H**.
+2. In Replace dialog, enter **robot** in the Find box and **G1ANT.Robot** in the Replace box.
+3. Apply changes by pressing **Replace All** button.
+4. Close the dialog with **Alt+F4**.
 
 This translates into the following code in G1ANT.Robot language:
 
