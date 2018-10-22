@@ -60,3 +60,5 @@ keyboard ⋘ctrl+s⋙robot⋘enter⋙⋘alt+f4⋙
 ```
 
 Run your robot with **F9** and enjoy its work.
+
+In the next lesson you will learn how to make your robot repeat its operations.
