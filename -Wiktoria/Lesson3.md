@@ -1,6 +1,6 @@
 Welcome to the third lesson!
 
-This time we will automate excel, get data from one file and enter them into another new created file. I've created a folder Data and an excel data file [data.xlsx](https://github.com/G1ANT-Robot/G1ANT.Tutorials/blob/master/data.xlsx).
+This time we will automate excel, get data from one file and enter them into another new created file. I've created a folder Data and an excel data file [data.xlsx](https://github.com/G1ANT-Robot/G1ANT.Tutorials/blob/master/-assets/data.xlsx).
 
 Firstly, we’re going to set a new variable equal to the path to the file in the computer because it is very useful. Variables are something like boxes where we store some types of information like numbers, letters or other characters.
 
