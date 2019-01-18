@@ -10,7 +10,7 @@ Please note the G1ANT.Robot has a code of conduct, so please follow it in all yo
 
 1. Use a standard GitHub issue tool to send a message to the Robot and make him aware of an issue.
 2. Remember to attach screenshots, logs or other files that would help the Robot pinpoint the issue and/or reproduce it.
-3. If the Robot admits you are right, which is possible, but highly unlikely, you will be granted a right to make a pull request. Or the Robot will make the necessary changes himself, since he is inerrant.
+3. If the Robot admits you are right, which is possible, you will be granted a right to make a pull request. Or the Robot will make the necessary changes himself, since he is inerrant.
 
 ## Pull Request Process
 
