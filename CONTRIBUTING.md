@@ -1,6 +1,6 @@
 # Contributing
 
-First of all, kudos to everyone, who wants to share their ideas, comments, complaints, flames and other input with the mighty Robot! The Robot appreciates any kind of contribution, which helps him to get rid of humans, er… to take the burden off of them.
+First of all, we invite you to contribute to these tutorials and kudos to everyone, who wants to share their ideas, comments, complaints, flames and other input with the mighty Robot! The Robot appreciates any kind of contribution, which helps him to get rid of humans, er… to take the burden off of them.
 
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change. The Robot will severely punish those who don’t comply.
 
