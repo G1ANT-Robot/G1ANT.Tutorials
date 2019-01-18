@@ -20,7 +20,7 @@ We use [headers](https://guides.github.com/features/mastering-markdown/#examples
 
 In tutorials, we avoid media objects (pictures, videos and so on), because they would affect displaying the content in the G1ANT.Robot panel. Should you want to attach any example file for your tutorials, place it in [-assets](../-assets/) folder, and link to it as relative path in the .md file, for example `../-assets/data.xslx`. 
 
-Folders and files with the “-” prefix are skipped by our sync tool, which gathers together Markdown files from Manual, Tutorials and Addons repositories and creates content to be displayed on G1ANT.Manual and G1ANT.Learning websites.
+Folders and files with the “-” prefix are skipped by our sync tool, which gathers together Markdown files from [Manual](https://github.com/G1ANT-Robot/G1ANT.Manual), Tutorials and [Addon](https://github.com/G1ANT-Robot/G1ANT.Addon) repositories and creates content to be displayed on the [G1ANT.Manual](https://manual.g1ant.com) and [G1ANT.Learning](http://learning.g1ant.com) websites.
 
 ## Contributing
 
