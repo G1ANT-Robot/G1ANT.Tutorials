@@ -14,7 +14,7 @@ Contributing to the documentation requires a GitHub account and some [Markdown](
 
 Folders are treated as separated courses in the Tutorials. Folder names are used for the titles of courses, so [For Beginners](../For Beginners/) folder will turn into “For Beginners” course title on the website.
 
-Files represent individual lessons within a course. The filenames are sequential numbers determining the lessons order. We start with 10 and use the increments of 10 for the filenames, so that there is some room left for additional intermediate lessons that might appear in future and could be placed between existing ones without disturbing the whole file structure and the resulting lessons order in the Tutorials.
+Files represent individual lessons within a course. The filenames are sequential numbers determining the lessons order. We start with 010 and use three digits and the increments of 10 for the filenames, so that there is some room left for additional intermediate lessons that might appear in future and could be placed between existing ones without disturbing the whole file structure and the resulting lessons order in the Tutorials.
 
 We use [headers](https://guides.github.com/features/mastering-markdown/#examples) in Markdown files to allow navigation in the Tutorials structure. Each lesson’s title is derived from header 1 in the .md file.
 
