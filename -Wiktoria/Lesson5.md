@@ -3,7 +3,7 @@ Welcome to the 5th lesson!
 You’ve learned so much so far that this time we’ll try to do a little more complicated automation. Finally, a web one!
 Our aim is to fill in the following table in excel using data from [x-rates.com](https://x-rates.com/) in Internet Explorer.
 
-The excel template is available [here](https://github.com/G1ANT-Robot/G1ANT.Tutorials/blob/master/update_currency.xlsx).
+The excel template is available [here](https://github.com/G1ANT-Robot/G1ANT.Tutorials/blob/master/-assets/update_currency.xlsx).
 
 Firstly, we should create a new variable containing the path to this file.
 
@@ -209,8 +209,8 @@ Now we have to convert the result value to float type (type which allows us to h
 
 ```G1ANT
         ♥TodayValue = ⟦float⟧♥result
- ```
- 
+```
+
 The last thing is to set new variable **♥TodayCol** to **♥currFromCol** just to make our code clearer next time we come back to it, set **♥TodayValue** to the specified cell and increase **♥row** by 1 because this loop fill is in Today Column row by row.
 
 ```G1ANT
@@ -290,21 +290,21 @@ Now, let’s create a loop as in the previous procedures and make it not never-e
             ♥row = ♥row + 1
     jump ➜calculatePercentChange
         ➜finish4
- ```
- 
+```
+
  After we get value from “Today” column, we should get also value from “Yesterday”.
- 
+
  ```G1ANT
         excel.getvalue row ♥row colindex ♥YesterdayCol result ♥YesterdayValue
  ```
- 
+
  Now we can calculate the percent change and set the result in excel:
- 
+
  ```G1ANT
         ♥percentChange = ‴=((♥todayValue - ♥YesterdayValue)/♥todayValue)‴
         excel.setvalue value ♥percentChange row ♥row colindex ♥percentChangeCol
  ```
- 
+
  Finally, let’s set value and increase variable ♥row by 1.
 
 This is the end of this Currency automation! 
